@@ -1,4 +1,4 @@
-import fs from "fs";
+import * as fs from "fs";
 
 const sum: (list: number[]) => number = (list) => list.reduce((acc, elem) => acc + elem);
 const readInput: (day: number) => string = (number) => fs.readFileSync(`./inputs/day${number}.txt`).toString();
@@ -13,7 +13,8 @@ function stringToElfCaloriesTotal(str: string): number[] {
 }
 
 function mostCalories(str: string): number {
-  return Math.max(...stringToElfCaloriesTotal(str));
+  const calories = stringToElfCaloriesTotal(str);
+  return Math.max(...calories);
 }
 
 function threeMostCalories(str: string): number[] {
