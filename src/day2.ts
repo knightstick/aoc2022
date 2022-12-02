@@ -1,11 +1,5 @@
-import * as fs from "fs";
-
-const sum: (list: number[]) => number = (list) => list.reduce((acc, elem) => acc + elem);
-const readInput: (day: number) => string = (number) => fs.readFileSync(`./inputs/day${number}.txt`).toString();
-
-function assert(condition: boolean, message = "Assertion Failed"): void {
-  if (!condition) throw new Error(message);
-}
+import { sum, readInput } from "./utils";
+import { assertEqual } from "./testing";
 
 enum Choice {
   Rock = "rock",
@@ -193,8 +187,8 @@ B X
 C Z
 `;
 
-assert(partOne(test) === 15, `Expected 15, got ${partOne(test)}`);
-assert(partTwo(test) === 12, `Expected 12, got ${partTwo(test)}`);
+assertEqual(partOne(test), 15);
+assertEqual(partTwo(test), 12);
 
 const input = readInput(2);
 console.log(1, partOne(input));
