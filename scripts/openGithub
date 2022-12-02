@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+  echo "Please provide a file as a command-line argument"
+  exit 1
+fi
+
+URL="https://github.com/knightstick/aoc2022/blob/main/$1"
+
+# Open the URL in the default web browser
+open "$URL"

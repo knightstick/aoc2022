@@ -11,6 +11,32 @@
         "kind": "build",
         "isDefault": true
       }
+    },
+    {
+      "label": "Open file on Github",
+      "type": "shell",
+      "command": "./scripts/openGithub",
+      "args": ["${relativeFile}"],
+      "presentation": {
+        "echo": false,
+        "reveal": "never",
+        "focus": false,
+        "panel": "shared"
+      },
+      "group": "build"
+    },
+    {
+      "label": "Copy URL to Github",
+      "type": "shell",
+      "command": "./scripts/copyGithub",
+      "args": ["${relativeFile}"],
+      "presentation": {
+        "echo": false,
+        "reveal": "never",
+        "focus": false,
+        "panel": "shared"
+      },
+      "group": "build"
     }
   ]
 }

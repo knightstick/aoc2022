@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Check if a path was provided as a command-line argument
+if [ $# -eq 0 ]; then
+  # Print an error message if no path was provided
+  echo "Please provide a path as a command-line argument"
+  # Exit with a non-zero exit code to indicate an error
+  exit 1
+fi
+
+# Construct the URL by concatenating the domain and the path
+URL="https://github.com/knightstick/aoc2022/blob/main/$1"
+
+# Remove the quotes and the newline from the URL using a range expression
+# This range expression uses the octal escape codes for the newline, single quote, and double quote characters
+# to specify the characters to be deleted from the URL. The hyphen ( - ) is used to specify a range of characters,
+# so this range expression will delete the newline, single quote, and double quote characters from the URL.
+URL=$(echo "$URL" | tr -d '[\n\047\042]')
+
+# Copy the URL to the clipboard
+echo "$URL" | pbcopy
