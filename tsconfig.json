@@ -1,13 +1,11 @@
 {
   "compilerOptions": {
     "module": "CommonJS",
-    "target": "es5",
+    "target": "ESNext",
     "noImplicitAny": true,
     "outDir": "./dist",
     "sourceMap": true,
     "strictNullChecks": true
   },
-  "include": [
-    "src/**/*"
-  ],
+  "include": ["src/**/*"]
 }
