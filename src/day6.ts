@@ -1,75 +1,49 @@
 import { readInput } from "./utils";
 
-class FourBuffer {
+class Bufferer {
   private array: string[];
+  private length: number;
 
-  constructor() {
+  constructor(length: number) {
     this.array = [];
+    this.length = length;
   }
 
   add(letter: string) {
     this.array.push(letter);
-    while (this.array.length > 4) {
+    while (this.array.length > this.length) {
       this.array.shift();
     }
   }
 
   isAllDifferent(): boolean {
     const set = new Set(this.array);
-    return set.size === 4;
+    return set.size === this.length;
   }
 }
 
-class FourteenBuffer {
-  private array: string[];
+function findStartOfPacket(str: string, length: number): number {
+  const list = str.trim().split("");
 
-  constructor() {
-    this.array = [];
-  }
+  const buffer = new Bufferer(length);
 
-  add(letter: string) {
-    this.array.push(letter);
-    while (this.array.length > 14) {
-      this.array.shift();
+  for (let i = 0; i < list.length; i++) {
+    const element = list[i];
+    buffer.add(element);
+    if (buffer.isAllDifferent()) {
+      return i + 1;
     }
   }
 
-  isAllDifferent(): boolean {
-    const set = new Set(this.array);
-    return set.size === 14;
-  }
+  return -1;
 }
 
 function partOne(str: string): number {
-  const list = str.trim().split("");
-
-  const buffer = new FourBuffer();
-
-  for (let i = 0; i < list.length; i++) {
-    const element = list[i];
-    buffer.add(element);
-    if (buffer.isAllDifferent()) {
-      return i + 1;
-    }
-  }
-
-  return -1;
+  return findStartOfPacket(str, 4);
 }
 
 function partTwo(str: string): number {
-  const list = str.trim().split("");
-
-  const buffer = new FourteenBuffer();
-
-  for (let i = 0; i < list.length; i++) {
-    const element = list[i];
-    buffer.add(element);
-    if (buffer.isAllDifferent()) {
-      return i + 1;
-    }
-  }
-
-  return -1;
+  return findStartOfPacket(str, 14);
 }
 
 const input = readInput(6);
