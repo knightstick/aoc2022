@@ -8,6 +8,14 @@ export function readInput(day: number): string {
   return fs.readFileSync(`./inputs/day${day}.txt`).toString();
 }
 
+export function readInputLines(day: number): string[] {
+  return splitLines(readInput(day));
+}
+
+export function splitLines(input: string): string[] {
+  return input.trim().split("\n");
+}
+
 export function chunks<T>(list: T[], size: number): T[][] {
   const result: T[][] = [];
   let inner: T[] = [];
